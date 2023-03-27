@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container" >
+    <h2 class="mt-3" >Latest articles</h2>  
+    <div class="cards mt-3 mb-3 d-flex flex-wrap justify-content-around">
+      {% for article in articles %}
+        <div  class="card mt-4" style="width: 22rem;">
+          <img src="{{article.image}}" class="card-img-top" alt="Article Image">
+          <div class="card-body">
+            <h5 class="card-title">{{article.title}}</h5>
+            <p class="card-text">{{article.body|truncatewords:15}}</p>
+            <a class="pro-link", data-url="{% url 'article_detail' article.id %}" >Read More</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>  
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="main  row mt-3">
+            <div class="col-8">
+                <h4 class="" >{{article.title}}</h4> 
+                <small class="text-muted" >Created: {{article.created_at|timesince}} ago | Updated: {{article.updated_at|timesince}} ago | Author: @{{article.author}}</small>
+                <img  class=" article-img img-fluid" src="{{article.image}}" alt="Article Image">
+                <p style="text-align: justify; text-justify: inter-word;" class="mt-3">
+                    {{article.body|linebreaks|safe}}
+                </p>
+                {% if request.user == article.author %}
+                <a class="btn btn-warning pro-link "  data-url="{% url 'article_update' article.id %}" >Update</a>
+                <a class="btn btn-danger pro-link " data-url="{% url 'article_delete' article.id %}" >Delete</a>
+                {% endif %}
+            </div>
+            <div class="col-4  ml-2">
+                <h5>Latest Articles</h5>
+                {% for i in articles  %}
+                    {% if not article == i %}
+                    <div class="card mt-2" style="width: 18rem;">
+                        <div class="card-body">
+                        <span class="card-text">{{i.title}}</span><br>
+                        <a class="pro-link card-link" data-url="{% url 'article_detail' i.id %}" >Read More</a>
+                        <small class="text-muted" >{{i.created_at|timesince}} ago</small>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

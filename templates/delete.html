@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h2 class="mt-3">Delete - {{article.title}} </h2>
+        <form id="article-form" action="{% url 'article_delete' article.id %}" method="post">{% csrf_token %}
+            <p>Are you sure to  delete this article?</p>
+            <button data-redirect="home/" id="submitButton" type="button" class="btn btn-danger" >Yes Delete</button>
+            <a data-url="{% url 'index' %}" class="btn btn-primary pro-link">No Back to Home</a>
+        </form>
+    </div>
+{% endblock content %}
