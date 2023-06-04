@@ -6,6 +6,7 @@
         <form id="article-form" action="{% url 'article_update' article.id %}" method="post">{% csrf_token %}
             {{form|crispy}}
             <button id="submitButton" data-redirect="{% url 'article_detail' article.id %}"  type="button" class="btn btn-primary" >Submit</button>
+            <a data-url="{% url 'index' %}" class="btn btn-secondary pro-link">Back to Home</a>
         </form>
     </div>  
 {% endblock content %}

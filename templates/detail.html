@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container">
         <div class="main  row mt-3">
-            <div class="col-8">
+            <div class="col-md-8">
                 <h4 class="" >{{article.title}}</h4> 
                 <small class="text-muted" >Created: {{article.created_at|timesince}} ago | Updated: {{article.updated_at|timesince}} ago | Author: @{{article.author}}</small>
                 <img  class=" article-img img-fluid" src="{{article.image}}" alt="Article Image">
@@ -14,7 +14,7 @@
                 <a class="btn btn-danger pro-link " data-url="{% url 'article_delete' article.id %}" >Delete</a>
                 {% endif %}
             </div>
-            <div class="col-4  ml-2">
+            <div class="col-md-4 mt-md-0 mt-4  ml-2">
                 <h5>Latest Articles</h5>
                 {% for i in articles  %}
                     {% if not article == i %}
